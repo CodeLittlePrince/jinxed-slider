@@ -37,13 +37,18 @@ Slider.prototype = $.extend({}, new ws(), {
 		// 创建两张图片，插入一头一尾，达到无间隙轮播（所以图片总数加2）
 		var firstImg = this.sliderBox.firstElementChild.cloneNode(true),
 			lastImg = this.sliderBox.lastElementChild.cloneNode(true);
+		// fix 伪第一张图加载出现真第一张图瞬间可看见的情况
+		lastImg.style.visibility = 'hidden';
 		this.sliderBox.appendChild(firstImg);
 		this.sliderBox.insertBefore(lastImg, this.sliderBox.firstElementChild);
 	},
 	/* 初始化属性 */
 	initUI: function(){
+		// 一开始直接无动画将图转到伪第一张（DOM第二张）
 		this.sliderBox.style.transform = 'translate3d(' + '-' + this.config.width * this.config.startIndex +this.sizeUnit + ', 0, 0)';
 		this.sliderBox.style.webkitTransform = 'translate3d(' + '-' + this.config.width * this.config.startIndex +this.sizeUnit + ', 0, 0)';
+		// 恢复 真第一张图的可见
+		this.sliderBox.firstElementChild.style.visibility = 'visible';
 		this.config.startIndex ++;
 		// transform其实是一个多线程实现的动画，它的实现和事件差不多，也需要等主程序代码全部执行完才工作
 		this.play();
