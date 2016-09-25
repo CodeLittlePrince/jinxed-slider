@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.slider{
+			overflow: hidden;
+		}
+		.sliderBox img{
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div id="slider">
+		<img src="http://img9.bcyimg.com/editor/flag/1789c/fd9a3510789911e685513da5a6bcd9f0.jpg" alt="1">
+		<img src="http://img9.bcyimg.com/editor/flag/1789e/3594c0307a4211e6a5a9c55c03f306df.jpg" alt="2">
+		<img src="http://img9.bcyimg.com/editor/flag/4bmn/1cb8de60735911e68bc15d0c207e07dc.jpg" alt="3">
+		<img src="http://img9.bcyimg.com/editor/flag/1789i/57520fe07d6a11e69b4e176454824d8a.jpg" alt="4">
+	</div>
+</body>
+<script src="jquery.js"></script>
+<script type="text/javascript" src="widget.js"></script>
+<script type="text/javascript" src="slider.js"></script>
+<script type="text/javascript">
+	var sliderContainer = document.getElementById('slider');
+	var config = {
+		container: sliderContainer,
+		startIndex: 1,
+		useRem : false,
+		width : 870,
+		height : 120,
+		slidetime : 1500,
+		speed: 0.3
+	};
+	var slider = new Slider();
+	slider.run(config);
+</script>
+</html>
